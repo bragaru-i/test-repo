@@ -8,8 +8,22 @@ import styles from './HomePage.module.scss';
 
 // ACTIONS
 import { removeCity } from '../../actions/myCitiesAction';
+import CurrentWeatherPanel from '../../components/CurrentWeatherPanel/CurrentWeatherPanel';
+
+// Weather Modal
+import DIsplayWeatherModal from '../../components/DisplayWeatherModal/DIsplayWeatherModal';
+
+import useHomePage from './useHomePage';
+
+import setAlert from '../../actions/setAlert';
 
 const HomePage = ({ cities, removeCity }) => {
+  const {
+    modalToggler,
+
+    showForecast,
+    onCloseModal,
+  } = useHomePage(setAlert);
   let homeDIsplay = '';
   const onRemoveCity = (id) => {
     removeCity(id);
@@ -25,10 +39,25 @@ const HomePage = ({ cities, removeCity }) => {
             <div className={styles.cityLat}>{item.lat}</div>
             <div className={styles.cityLon}>{item.lon}</div>
             <Button
+              text='Open Forecast'
+              onClick={modalToggler}
+              color='yellow'
+            />
+            <Button
               text='Remove from Cities'
               onClick={() => onRemoveCity(item.id)}
               color='error'
             />
+            {showForecast && (
+              <DIsplayWeatherModal
+                showForecast={showForecast}
+                onCloseModal={onCloseModal}
+                lat={item.lat}
+                lon={item.lon}
+                addCity={() => {}}
+                name={item.display_name}
+              />
+            )}
           </div>
         ))}
       </div>
@@ -40,7 +69,7 @@ const HomePage = ({ cities, removeCity }) => {
       <WIndowWrapper title='Weather Now in Your cities'>
         <div className={styles.cities}>{homeDIsplay}</div>
       </WIndowWrapper>
-      <WIndowWrapper title='Last Searches'>searches</WIndowWrapper>
+      <CurrentWeatherPanel />
     </div>
   );
 };

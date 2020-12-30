@@ -6,22 +6,19 @@ import './SearchResultItem.scss';
 import DIsplayWeatherModal from '../DisplayWeatherModal/DIsplayWeatherModal';
 import { connect } from 'react-redux';
 import { addCity, removeCity } from '../../actions/myCitiesAction';
+import setAlert from '../../actions/setAlert';
+import useSearchResultItem from './useSearchResultItem';
 
-const SearchResultItem = ({ item, addCity }) => {
-  const [showMenu, setSHowMenu] = useState(false);
-  const [showForecast, setShowForecats] = useState(false);
-
-  const onAddCityClick = (e) => {
-    console.log(item);
-    const name = item.display_name;
-    const { lat, lon, place } = item;
-    addCity({ name, lat, lon, place });
-  };
-
-  const onClick = () => setSHowMenu((prevState) => !prevState);
-  const modalToggler = () => setShowForecats((prevState) => !prevState);
-  const onCloseModal = () => setShowForecats(false);
+const SearchResultItem = ({ item, addCity, setAlert }) => {
   const ref = useRef();
+  const {
+    modalToggler,
+    onAddCityClick,
+    showMenu,
+    onClick,
+    showForecast,
+    onCloseModal,
+  } = useSearchResultItem(addCity, item, setAlert);
   const newMenu = (
     <div className='search-results-item__menu'>
       <Button
@@ -41,8 +38,8 @@ const SearchResultItem = ({ item, addCity }) => {
     </div>
   );
   return (
-    <div className='search-results-item'>
-      <div className='search-results-item__name' ref={ref} onClick={onClick}>
+    <div className='search-results-item' onClick={onClick}>
+      <div className='search-results-item__name' ref={ref}>
         {item.display_name}
       </div>
       {showMenu ? (
@@ -76,4 +73,6 @@ const SearchResultItem = ({ item, addCity }) => {
   );
 };
 
-export default connect(null, { addCity, removeCity })(SearchResultItem);
+export default connect(null, { addCity, removeCity, setAlert })(
+  SearchResultItem
+);

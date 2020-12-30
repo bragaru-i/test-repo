@@ -14,12 +14,6 @@ import './App.scss';
 import Alert from '../components/Alert/Alert';
 
 const App = () => {
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      // console.log('Latitude is :', position.coords.latitude);
-      // console.log('Longitude is :', position.coords.longitude);
-    });
-  });
   return (
     <>
       <div className='row'>

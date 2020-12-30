@@ -74,7 +74,7 @@ const DIsplayWeatherModal = ({
       return (
         <>
           <div
-            key={hour.dt}
+            key={`${hour.dt}--${Date.now()}`}
             className='forecast__daily-box f-center'
             onClick={() => onClickHourly(hour)}
           >
@@ -92,7 +92,7 @@ const DIsplayWeatherModal = ({
       return (
         <>
           <div
-            key={day.dt}
+            key={`${day.dt}--${Date.now()}`}
             className='forecast__daily-box f-center'
             onClick={() => onClick(day)}
           >
@@ -126,6 +126,8 @@ const DIsplayWeatherModal = ({
       close={showForecast}
       onDismiss={onCloseModal}
       onAccept={() => onAddCityClick({ name, lat, lon })}
+      onAcceptType='green'
+      onDissmissType='error'
       onAcceptText='Add To My Cities'
       onAcceptIsValid
     >

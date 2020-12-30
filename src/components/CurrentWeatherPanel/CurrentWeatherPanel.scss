@@ -1,0 +1,18 @@
+.current-weather {
+  padding: 1.2rem;
+  &-now {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+  }
+}
+
+.current-weather-now__item--alert {
+  font-weight: bold;
+}
+.weather-alerts {
+  padding: 0 1.2rem;
+  font-size: 1.3rem;
+  &-description {
+  }
+}
