@@ -1,0 +1,2 @@
+export const PREV_CITY_ADD = 'PREV_CITY_ADD';
+export const PREV_CITY_REMOVE = 'PREV_CITY_REMOVE';

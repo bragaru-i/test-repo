@@ -1,0 +1,10 @@
+.search {
+  &__panel {
+    flex-direction: column;
+    padding: 2rem 0;
+    & > :last-child {
+      align-self: end;
+      margin: 1.2rem 6rem 2rem;
+    }
+  }
+}

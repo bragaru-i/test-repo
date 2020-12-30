@@ -1,0 +1,83 @@
+.input {
+  margin: 1rem;
+  display: block;
+  position: relative;
+  height: 4.2rem;
+  overflow: hidden;
+  &--sm {
+    width: 20rem;
+  }
+  &--md {
+    width: 30rem;
+  }
+  &--lg {
+    width: 40rem;
+  }
+  &__field {
+    height: 100%;
+    width: 100%;
+    padding: 2rem 0 0 2rem;
+    outline: 0;
+    border: none;
+  }
+  &__label {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-bottom: 1px #90a0b7 solid;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 2px;
+      left: 0;
+      transform: translateX(100%);
+      border-bottom: 3px #109cf1 solid;
+      transition: all 0.3s ease;
+    }
+  }
+  &__placeholder {
+    position: absolute;
+    transition: all 0.3s ease;
+    color: #394264;
+    font-size: 1.4rem;
+    top: 50%;
+    transform: translate(3rem, -50%);
+  }
+}
+.invalid {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 100;
+  left: 0;
+  border-bottom: 3px red solid;
+}
+.input__field:hover + .input__label::after,
+.input__field:valid + .input__label::after {
+  transform: translateX(0);
+}
+.input__field:hover + .input__label .input__placeholder,
+.input__field:valid + .input__label .input__placeholder {
+  transform: translate(1rem, -100%);
+}
+
+.input__pass-ico {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+  transform: translateY(10%);
+  fill: #90a0b7;
+  cursor: pointer;
+  &:hover {
+    fill: #272727;
+  }
+}

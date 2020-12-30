@@ -1,0 +1,51 @@
+.forecast {
+  width: 120rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1.2rem 2.4rem;
+
+  h3 {
+    text-align: center;
+  }
+  h4 {
+    margin-top: 1.2rem;
+  }
+  &__timezone {
+    align-self: flex-end;
+    margin: 0.8rem 1.2rem;
+  }
+  &__daily,
+  &__hourly {
+    display: flex;
+    flex-wrap: wrap;
+    &-box {
+      position: relative;
+      &:not(:last-child) {
+        margin-right: 1.2rem;
+      }
+      width: 8rem;
+      height: 8rem;
+      background-color: #6e79a1;
+      cursor: pointer;
+      &:hover {
+        background-color: #7882a7;
+      }
+
+      &-day {
+        font-size: 3rem;
+      }
+      &-month {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+.forecast__hourly {
+  margin: 0 0 1.2rem 0;
+  & > * {
+    margin-top: 1.2rem;
+  }
+}
