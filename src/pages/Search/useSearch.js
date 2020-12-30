@@ -20,8 +20,7 @@ const useSearch = (searchForward, searchReverse, addSearch) => {
 
   const onChangeInputs = (e) => {
     const { name, value } = e.target;
-    // const trimmed = validator.trim(value, [' ']);
-    // console.log(trimmed);
+
     setInputs((prevState) => ({
       ...prevState,
       [name]: value,
@@ -60,7 +59,6 @@ const useSearch = (searchForward, searchReverse, addSearch) => {
     }
   };
   const onCardClick = (el) => {
-    // console.log(el);
     if (el.lat) {
       searchReverse(el);
     } else {

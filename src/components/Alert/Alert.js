@@ -6,7 +6,6 @@ import styles from './Alerts.module.scss';
 
 // { msg, title, type, timer }
 const Alerts = ({ alerts }) => {
-  console.log(alerts);
   return (
     <>
       {alerts && alerts.length > 0 && (

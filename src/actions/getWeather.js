@@ -13,7 +13,6 @@ const getWeather = (body) => (dispatch) => {
   weatherApi
     .get('', { params })
     .then((res) => {
-      console.log(res.data);
       return dispatch({
         type: actionTypes.GET_WEATHER_SUCCESS,
         payload: res.data,

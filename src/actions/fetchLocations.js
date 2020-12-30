@@ -25,7 +25,6 @@ export const searchForward = (body) => (dispatch) => {
 };
 export const searchReverse = (body) => (dispatch) => {
   dispatch({ type: actionTypes.SEARCH_COORDS_START });
-  console.log('dispatch started');
   const params = {
     key,
     ...body,
@@ -40,7 +39,6 @@ export const searchReverse = (body) => (dispatch) => {
       });
     })
     .catch((error) => {
-      console.log(error);
       dispatch({ type: actionTypes.SEARCH_COORDS_FAIL, payload: error });
     });
 };

@@ -5,10 +5,8 @@ export const loadState = () => {
       return undefined;
     }
 
-    console.log('State loaded from localStorage successfully');
     return JSON.parse(serializedState);
   } catch (err) {
-    console.log('State loaded from localStorage failed');
     return undefined;
   }
 };
